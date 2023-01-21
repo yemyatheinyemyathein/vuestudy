@@ -2,7 +2,7 @@
     <assignment-list :assignments="inProgress" title="In Progress"/>
     <assignment-list :assignments="inComplete" title="In Complete"/>
 
-    <assignment-create :newAssignment.sync="newAssignment" :assignments="assignments" :add="add"></assignment-create>
+    <assignment-create v-model:newAssignment="newAssignment" :assignments="assignments" :add="add"></assignment-create>
     <!-- <form @submit.prevent="add">
         <input v-model="newAssignment" type="text" placeholder="New Assignment..."/>
         <button type="submit">Add</button>
@@ -40,16 +40,13 @@
 
     methods: {
         add(){
-            // e.preventDefault()
-            // alert("Hi There!!")
-            // alert(this.newAssignment)
             this.assignments.push({
                 name: this.newAssignment,
                 complete : false,
                 id : this.assignments.length+ 1
             })
 
-            // this.newAssignment = ""
+            this.newAssignment = ""
         }
     }
 
